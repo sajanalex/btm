@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Child Performance</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1 th:text="|${pupil.firstName} ${pupil.lastName}'s Dash Board|">Child Details Displays here</h1>
+
+	<div th:text="|Child Name: ${pupil.firstName}  ${pupil.lastName}|"></div>
+	<div th:text="|School Name: ${pupil.school.schoolName}|"></div>
+	<div th:text="|About Me: ${pupil.bio}|"></div>
+	
+	<div th:if="${activities.size==0}">
+		<h2>No Activities to display. Please engage in more activities and earn badges</h2>
+	</div>
+
+	<div th:each="activity: ${activities}">
+
+			<div th:text="|Activity Date: ${activity.activityDate} Start: ${activity.activityStart}
+		 	Finish: ${activity.activityFinish} Activity Name ${activity.activity.activityName}|">
+		 	</div>
+	</div>
+
+
+
+
+
+<div th:if="${score!=null}">
+	<div th:text="|Child Score Badge: ${score.badge} Activity Duration ${score.totalActivity}|">
+	</div>
+</div>
+<h3>Existing Challengers</h3>
+<div th:each="challenger: ${challengers}">
+	<div th:text="|Challenging friend: ${challenger.firstName} ${challenger.lastName}|">
+	</div>
+</div>
+<h3>Available Challengers</h3>
+<div th:each="inviter: ${inviters}">
+	<div th:text="|I am ready to challenge: ${inviter.firstName} ${inviter.lastName}|"></div>
+</div>
+
+
+	<form action="/logout" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		<button type="submit">Logout</button>
+	</form>
+	
+	
+	
+
+</body>
+</html>

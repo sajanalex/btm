@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+<h1>Welcome To Break The Mould Pas-Sport</h1>
+</div>
+<div>
+<form action="/pas-sport/child">
+<button>Child Zone</button>
+</form>
+</div>
+<div>
+<form action="/pas-sport/school">
+<button>School Zone</button>
+</form>
+</div>
+	<form action="/logout" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		<button type="submit">Logout</button>
+	</form>
+</body>
+</html>
